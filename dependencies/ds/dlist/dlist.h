@@ -41,20 +41,10 @@ compare the results with the end of the list to determine errors.
 Please note the documentation of each function for further details.
 It is recommended to use asserts when compiling.
 
-Dlist API
--   18/06/20 15:00  Ver:  1.0  API team discussion
--   18/06/20 17:00  Ver:  1.1  API mentor approval
--   19/06/20 11:00  Ver:  1.2  fixig: removing "const" from void *data in 
-									  DListSetData,
-                                      "Dlist" where "Slist" was still written
--   19/06/20 13:30  Ver:  1.3  fixig: removing "const" from void *data in 
-									  do_action, Insert, PushFront, PushBack.
-                                      Adding "const" to void *data  is_match.
--   23/06/20 16:30  Ver:  1.4  fixig: removing "const" from all iterators
 */
 
-#ifndef ILRD_DLIST_H
-#define ILRD_DLIST_H
+#ifndef DLIST_H
+#define DLIST_H
 
 #include <stddef.h>	/* size_t */
 
@@ -385,4 +375,4 @@ dlist_iter_t DListSplice(dlist_iter_t from, dlist_iter_t to, dlist_iter_t where)
 
 /*---------------------------------------------------------------------------*/
 
-#endif /* ILRD_DLIST_H */
+#endif /* DLIST_H */

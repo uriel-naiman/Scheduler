@@ -23,17 +23,10 @@ Main operations on Queue:
 Please note the documentation of each function for further details.
 It is recommended to use asserts when compiling.
 
-pqueue API
--   25/06/20 16:20 - Ver:  1.0  API team proposal
-                           1.1  Approved
--   26/06/20 10:20 - Ver:  1.2  return value of PQErase updated
--   26/06/20 19:55 - Ver:  1.3  fixed mistake in is before typedef 
--   28/06/20 17:40 - Ver:  1.4  is before edited to compare
--   28/06/20 18:45 - Ver:  1.5  added argument void *param to create function
 */
 
-#ifndef ILRD_PQUEUE_H
-#define ILRD_PQUEUE_H
+#ifndef PQUEUE_H
+#define PQUEUE_H
 
 #include <stddef.h>		/* size_t */
 
@@ -195,4 +188,4 @@ void *PQErase(pqueue_t *pqueue, void *data, pqueue_is_match_func_t is_match, voi
 
 /*---------------------------------------------------------------------------*/
 
-#endif /* ILRD_PQUEUE_H */ 
+#endif /* PQUEUE_H */ 

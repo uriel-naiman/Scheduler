@@ -1,8 +1,6 @@
 /******************************************************************
 * File Name: dlist.c											  *
 * Name: Uriel Naiman											  *
-* Create Date: 18.6.2020										  *
-* Reviewed by: 
 * Topic: Dlist C file										  	  *
 *******************************************************************/
 #include <stdio.h>		/* NULL */

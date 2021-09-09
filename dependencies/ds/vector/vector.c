@@ -1,162 +1,191 @@
-/*****************************************
-****** File Name - vector.c         ******
-****** Description - vector         ******
-****** Developer - Reut             ******
-****** Reviewer - sharazad          ******
-****** Review Date - 08/6/20        ******
-*****************************************/
-
-#include <stdio.h> 
-#include <stdlib.h> 
-#include <assert.h> 
+/******************************************************************
+* File Name: ilrd_vector.c										  *
+* Name: Uriel Naiman											  *
+* Topic: Vector C file											  *
+*******************************************************************/
+#include <stddef.h>			/*size_t*/
+#include <stdlib.h>			/*malloc, realloc, free*/
+#include <stdio.h>			/*printf*/
+#include <assert.h>			/*assert*/
 
 #include "vector.h"
 
-#define SHRINK_LIMIT 2 
+#define FAIL 1
 #define SUCCESS 0
-#define FAILURE 1
+#define TWO 2
+#define FOUR 4
 
 struct vector
 {
-    size_t size; 
-    size_t current_capacity;  
-    size_t initail_capacity; 
-    void **data; 
+    void **data_s;
+    size_t size;
+    size_t initial_capacity;
+    size_t current_capacity;
 };
- 
+
+/*---------------------------------------------------------------*/
 
 vector_t *VectorCreate(size_t capacity)
 {
-	vector_t *pt = NULL;
+	vector_t *vector = (vector_t*) malloc(sizeof(vector_t));
 
-	pt = (vector_t *) malloc (sizeof(vector_t)); 
-	if (NULL == pt)	
+	if (NULL == vector)
 	{
 		return (NULL);
 	}
-
-	pt->data = malloc (capacity * sizeof(void *));
-	if (NULL == pt->data)
-	{
-		free(pt);
-		pt = NULL;
-		return(NULL);
-	}
-	pt->size = 0;
-	pt->initail_capacity = capacity;
-	pt->current_capacity = pt->initail_capacity;
 	
-	return (pt);
+	vector->data_s = malloc(capacity * sizeof(void*));
+	vector->size = 1;
+	vector->initial_capacity = capacity;
+	vector->current_capacity = capacity;
+	
+	if (NULL == vector->data_s)
+	{
+		free(vector);
+		vector = NULL;
+		return (NULL);
+	}
+	
+	return (vector);
 }
+
+/*---------------------------------------------------------------*/
 
 void VectorDestroy(vector_t *vector)
 {
 	assert(vector);
-
-	free(vector->data);
-	vector->data = NULL;
-
+	free(vector->data_s);
+	vector->data_s = NULL;
 	free(vector);
 	vector = NULL;
 }
 
-int VectorPushBack(vector_t *vector, void *element)
-{
-	vector_t *tmp = vector;
-	if (VectorSize(vector) == vector->current_capacity)
-	{
-		tmp->data = realloc (vector->data, sizeof(void *) * 
-						   (vector->current_capacity * 2));
-		if (NULL == tmp->data)	
-		{
-			return (FAILURE);
-		}
-		vector->data = tmp->data;
-		vector->current_capacity *= 2;
-	}
-	vector->data[vector->size++] = element;
-	return (SUCCESS);	
-}
-
-
-void VectorPopBack(vector_t *vector)
-{
-	
-	if (VectorSize(vector))
-	{
-		--(vector->size);
-	}
-	
-	if (VectorSize(vector) <=  vector->current_capacity / SHRINK_LIMIT &&
-		vector->current_capacity / 2 >= vector->initail_capacity)
-	{
-		vector->current_capacity /= 2;
-		vector->data = realloc (vector->data, sizeof(void *) * 
-					   (vector->current_capacity / 2));
-	}
-}
-
+/*----------------------------------------------------------------*/
 
 void *VectorGetElement(const vector_t *vector, size_t index)
 {
-	assert(index < vector->size);
-	return (*(vector->data + index));
+	if (vector->size <= index)
+	{
+		return (NULL);
+	}
+	return (vector->data_s[index]);
 }
-
-
+/*---------------------------------------------------------------------------*/
 void VectorSetElement(vector_t *vector, size_t index, void *element)
 {
-	assert(index < vector->size);
-	*(vector->data + index) = element;
+	if (vector->size <= index)
+	{
+		return;
+	}
+	vector->data_s[index] = element;
 }
 
+/*----------------------------------------------------------------*/
+
+int VectorPushBack(vector_t *vector, void *element)
+{
+	void *temp = NULL;
+	
+	if (((vector->size) == (vector->current_capacity)))
+	{
+		temp = realloc(vector->data_s, (vector->size) * TWO);
+		
+		if (NULL == temp)
+		{
+			return (FAIL);
+		}
+		vector->data_s = temp;
+		vector->current_capacity *= TWO;
+	}
+	
+	vector->data_s[vector->size] = element;
+	++vector->size;
+	
+	return (SUCCESS);
+}
+
+/*----------------------------------------------------------------*/
+
+void VectorPopBack(vector_t *vector)
+{
+	if (0 < vector->size)
+	{
+		if ((vector->size) <= vector->current_capacity / FOUR) 
+		{
+			if (vector->current_capacity / TWO > vector->
+										initial_capacity)
+			{
+				vector->data_s = realloc(vector->data_s, (vector->
+				current_capacity / 2) * sizeof(void*));
+				vector->current_capacity /= TWO;
+			}
+			else
+			{
+				vector->data_s = realloc(vector->data_s, vector->
+						initial_capacity * sizeof(void*));
+				vector->current_capacity = vector->initial_capacity;
+			}
+		}
+		--vector->size;
+	}
+}
+
+/*----------------------------------------------------------------*/
 
 size_t VectorSize(const vector_t *vector)
 {
-	return (vector->size);
+	return (vector->size + 1);
 }
 
+/*----------------------------------------------------------------*/
 
 size_t VectorCapacity(const vector_t *vector)
 {
 	return (vector->current_capacity);
 }
 
-
+/*---------------------------------------------------------------------------*/
 
 int VectorReserve(vector_t *vector, size_t new_capacity)
 {
-	vector_t *tmp = vector;
-	
+	void *temp = NULL;
 	if (new_capacity > vector->current_capacity)
 	{
-		tmp->data = realloc (vector->data, sizeof(void *) * new_capacity);
-		if (NULL == tmp->data)	
+		temp = realloc(vector->data_s, new_capacity * 
+											sizeof(void*));
+		if 	(NULL == temp)
 		{
-			return (FAILURE);
+			return (FAIL);
 		}
-		vector->data = tmp->data;
+		vector->data_s = temp;
 		vector->current_capacity = new_capacity;
 	}
-	return(SUCCESS);
+		
+	return (SUCCESS);
 }
+
+/*----------------------------------------------------------------*/
 
 void VectorShrinkToFit(vector_t *vector)
 {
-
-	if (VectorSize(vector) <= vector->initail_capacity)
+	if (vector->size > vector->initial_capacity)
 	{
-		vector->current_capacity = vector->initail_capacity;	
+		vector->data_s = realloc(vector->data_s, vector->size * 
+											sizeof(void*));
+		vector->current_capacity = vector->size;
 	}
 	else
 	{
-		vector->current_capacity = vector->size;
+		vector->data_s = realloc(vector->data_s, vector->
+						initial_capacity * sizeof(void*));
+		vector->current_capacity = vector->initial_capacity;
 	}
-	vector->data = realloc (vector->data, 
-				   sizeof(void *) * vector->current_capacity);
 }
 
-void **VectorGetArr(const vector_t *vector)
+/*----------------------------------------------------------------*/
+
+void **VectorGetArr(const vector_t *vector);
 {
-    return (vector->data);
+	return (vector->data_s);
 }
+

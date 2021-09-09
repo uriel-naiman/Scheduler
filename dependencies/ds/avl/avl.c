@@ -1,8 +1,6 @@
 /**********************************************************************
 * File Name: avl.c          					    				  *
 * Name: Uriel Naiman								    			  *
-* Create Date: 2.8.2020		    									  *
-* Reviewed by: Itai Adi- Yosef        							 	  *
 * Topic: AVL C file                									  *
 **********************************************************************/
 #include <stdio.h>          /* NULL */

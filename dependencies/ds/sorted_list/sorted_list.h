@@ -34,32 +34,10 @@ Generally, in case of errors will return the end of the list. User should
 compare the results with the end of the list to determine errors. 
 Please note the documentation of each function for further details.
 It is recommended to use asserts when compiling.
-
-Sorted list API
--	22/06/20 14:00 Ver 1.0	API team discussion
--	22/06/20 18:00 Ver 1.1	API mentor approval
--	22/06/20 22:30 Ver 1.2	SortedListCreate updated to return sorted_list_t
-							do_action typedef changed from sl to sorted_list
-							SortedListFind - added types to args
--	23/06/20 07:30 Ver 1.3	corrected const on cmp typedef
-							SortedListCreate - changed from sl to sorted_list
--	23/06/20 22:30 Ver 1.4	const removed from all iter args
-							Removed sorted list as arg to findif
-							removed comment about 'where' with end
-							of list in insert function
-							cmp typedef - clarified which data is which
--	24/06/20 07:30 Ver 1.5	member name in sorted_list_iter_t was fixed		
--	24/06/20 11:30 Ver 1.6	fixed typedef of is_match and do_action
--							Merge comments were updated
--	28/06/20 15:40 Ver 1.7	Changed cmp to is_before and added void *param
--	28/06/20 19:00 Ver 1.8	Added void *param SortedListCreate
-                            Updated SortedListCreate comments
-                            Updated  comments in Merge
-                            Updated retrun value comments of is_before
 */
 
-#ifndef ILRD_SL_H
-#define ILRD_SL_H
+#ifndef SLIST_H
+#define SLIST_H
 
 #include <stddef.h>	/* size_t */
 #include "dlist.h" /* dlist_t */
@@ -374,4 +352,4 @@ int SortedListForEach(sorted_list_iter_t from,
 */
 void SortedListMerge(sorted_list_t *dest, sorted_list_t *src);
 
-#endif /* ILRD_SL_LIST_H */
+#endif /* SLIST_H */

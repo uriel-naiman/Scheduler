@@ -1,8 +1,6 @@
 /******************************************************************
 * File Name: sort_list.c										  *
 * Name: Uriel Naiman											  *
-* Create Date: 22.6.2020										  *
-* Reviewed by: Barak Merdler 				 						  *
 * Topic: sorted list C file										  *
 *******************************************************************/
 #include <stdio.h>		/* NULL*/

@@ -1,8 +1,6 @@
 /**********************************************************************
 * File Name: heap.c         					    				  *
 * Name: Uriel Naiman								    			  *
-* Create Date: 11.8.2020	    									  *
-* Reviewed by: Shai Hasid           							 	  *
 * Topic: Heap C file            									  *
 **********************************************************************/
 #include <stdlib.h>     /* malloc, free */

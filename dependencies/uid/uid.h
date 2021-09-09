@@ -8,11 +8,6 @@ APIs:
 -	IsSame - checks if two UIDs are the same.
 -	GetBadID - returns the bad ID.
 
-UID API
--	24/06/20 16:42 Ver 1.0	API team discussion
--	25/06/20 08:50 Ver 1.1  include guard added
--   25/06/20 11:00 Ver 1.2  uid_t edited to unique_id_t 
-                            file header sys/types.h added    
 */
 
 #ifndef ILRD_UID_H

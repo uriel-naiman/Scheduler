@@ -1,8 +1,6 @@
 /*****************************************************************
 * File Name: pqueue.c										  *
 * Name: Uriel Naiman										  *
-* Create Date: 25.6.2020									  *
-* Reviewed by: Janna										  *
 * Topic: pqueue C file										  *
 *******************************************************************/
 #include <stdio.h>		/* NULL */

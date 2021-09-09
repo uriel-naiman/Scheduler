@@ -1,8 +1,6 @@
 /**********************************************************************
 * File Name: heapify.c         					    				  *
-* Name: Uriel Naiman								    			  *
-* Create Date: 11.8.2020	    									  *
-* Reviewed by: Shai Hasid           							 	  *
+* Name: Uriel Naiman								    			  
 * Topic: Heapify C file            									  *
 **********************************************************************/
 #include <stdlib.h>     /* malloc, free*/
@@ -13,32 +11,6 @@
 
 
 void Swap(char *data1, char *data2, size_t n_bytes);
-
-/*void HeapifyUp(void *base, size_t nmemb, size_t index, size_t elem_size,     
-               heapify_cmp_func_t cmp, void *param)
-{
-    size_t parent = (index - 1) / 2;
-    (void)param;
-    (void)nmemb;
-
-    while(index > 0)
-    {
-        int cmpr = cmp(((char*)base + (index * elem_size)), 
-        ((char*)base + (parent * elem_size)), NULL);
-
-        if(cmpr < 0) 
-        {
-            Swap(((char*)base + (index * elem_size)), 
-                ((char*)base + (parent * elem_size)), elem_size);
-            index = parent;
-            parent = (index - 1) / 2;
-        }
-        else
-        {
-            return;
-        }  
-    }
-}*/
 
 void HeapifyUp(void *base, size_t nmemb, size_t index, size_t elem_size,     
                heapify_cmp_func_t cmp, void *param)
@@ -62,41 +34,6 @@ void HeapifyUp(void *base, size_t nmemb, size_t index, size_t elem_size,
 }
 
 /*---------------------------------------------------------------------------*/
-
-/*void HeapifyDown(void *base, size_t nmemb, size_t index, size_t elem_size,     
-                 heapify_cmp_func_t cmp, void *param)
-{
-    size_t left = index * 2 + 1;
-    size_t right = index * 2 + 2;
-    char *ch_base = base;
-
-    while (index < (nmemb / 2))
-    {
-        if (cmp((ch_base + left * elem_size), 
-            (ch_base + right * elem_size), param) < 0)
-        {
-            Swap((ch_base + index * elem_size), 
-            (ch_base + left * elem_size), elem_size);
-            index = left;
-            left = index * 2 + 1;
-            right = index * 2 + 2;
-        }
-        else if (cmp((ch_base + left * elem_size), 
-            (ch_base + right * elem_size), param) > 0)
-        {
-            Swap((ch_base + index * elem_size), 
-            (ch_base + right * elem_size), elem_size);
-            index = right;
-            left = index * 2 + 1;
-            right = index * 2 + 2;
-        }
-        else 
-        {
-            return;
-        }
-
-    }
-}*/
 
 void HeapifyDown(void *base, size_t nmemb, size_t index, size_t elem_size,     
                  heapify_cmp_func_t cmp, void *param)

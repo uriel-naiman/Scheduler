@@ -1,8 +1,6 @@
 /*****************************************************************
 * File Name: scheduler.c									  *
 * Name: Uriel Naiman										  *
-* Create Date: 29.6.2020									  *
-* Reviewed by: Guy Barazani									  *
 * Topic: scheduler C file									  *
 *******************************************************************/
 

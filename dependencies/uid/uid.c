@@ -1,9 +1,7 @@
 /******************************************************************
 * File Name: uid.c												  *
 * Name: Uriel Naiman											  *
-* Create Date: 25.6.2020										  *
-* Reviewed by: Anna Poriadkov 				 					  *
-* Topic: UID C file										  *
+* Topic: UID C file										  		  *
 *******************************************************************/
 #include <stdio.h>
 #include <sys/types.h> /* pid_t */ 

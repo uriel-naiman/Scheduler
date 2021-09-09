@@ -13,9 +13,6 @@ Find, insertion, and remove are O(log n), where n is the number of nodes in the 
 #include <stddef.h>	/* size_t */
 
 
-/*version 1.0  mentor approval */
-
-
 typedef struct avl avl_t;
 
 /* typedefs of functions to be implemented by the user */

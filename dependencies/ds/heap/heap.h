@@ -9,14 +9,10 @@ Operations on heap:
 -   Peek - displays the first element of heap which is the min / max value
 -   Remove - removes given element from the heap
     a pointer to it.
-
--------------------------------------------------------------------------------
-Heap API
--   Ver: 1.0  
 */
 
-#ifndef ILRD_HEAP_H
-#define ILRD_HEAP_H 
+#ifndef HEAP_H
+#define HEAP_H 
 
 #include <stddef.h>	/* size_t */
 
@@ -147,4 +143,4 @@ int HeapIsEmpty(heap_t *heap);
 /*---------------------------------------------------------------------------*/
 void PrintIntVector(heap_t *heap);
 
-#endif /* ILRD_HEAP_H */
+#endif /* HEAP_H */

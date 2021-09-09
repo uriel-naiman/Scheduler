@@ -1,8 +1,6 @@
 /**********************************************************************
 * File Name: heap_sort.c         					    				  *
 * Name: Uriel Naiman								    			  *
-* Create Date: 11.8.2020	    									  *
-* Reviewed by: Shai Hasid           							 	  *
 * Topic: Heap C file            									  *
 **********************************************************************/
 #include <stddef.h> 	/* size_t */

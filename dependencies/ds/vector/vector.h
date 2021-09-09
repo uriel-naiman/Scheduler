@@ -13,18 +13,11 @@ Main operations on vector:
 -   Set element- sets the value of the element at a specific index
 -   Reserve - reallocates memory to the new capacity
 -   Shrink to fit - shrinks capacity of the memory to the current size
-
-Vector API
--   Ver:  1.0  API team Approval
--   Ver:  1.1  API approved 
--   Ver:  1.2  fixing:  - Adapted VectorSetElement signature
--                       - Comments in - VectorSetElement
--                                     - VectorGetElement
--                                     - VectorCapacity  
+  
 */
 
-#ifndef ILRD_VECTOR_H
-#define ILRD_VECTOR_H
+#ifndef VECTOR_H
+#define VECTOR_H
 
 #include <stddef.h>	/* size_t */
 
@@ -179,4 +172,4 @@ void VectorShrinkToFit(vector_t *vector);
 void **VectorGetArr(const vector_t *vector);
 
 
-#endif /* ILRD_VECTOR_H */
+#endif /* VECTOR_H */

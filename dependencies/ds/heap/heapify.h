@@ -6,15 +6,10 @@ Util functions include:
 -   HeapifyUp - re-arranges the array to have a heap property, going bottom-up
 -   HeapifyDown - re-arranges the array to a have heap property, going up-bottom
 
-
--------------------------------------------------------------------------------
-heap_util API
--   Ver: 1.0 
--   Ver: 1.1 - change signatures to receive nmemb 
 */
 
-#ifndef ILRD_HEAP_UTIL_H
-#define ILRD_HEAP_UTIL_H 
+#ifndef HEAP_UTIL_H
+#define HEAP_UTIL_H 
 
 #include <stddef.h>    /* size_t */
 
