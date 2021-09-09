@@ -1,2 +1,2 @@
 # Scheduler
-A system function scheduler 
+A system function scheduler written in C
